@@ -1,4 +1,7 @@
 JobApplication::Application.routes.draw do
+  
+  root to: 'static_pages#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

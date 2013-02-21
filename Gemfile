@@ -6,7 +6,8 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'jquery-rails'
+gem "haml-rails", "~> 0.4"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,7 +21,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :test, :development do
+  gem "rspec-rails", "~> 2.12.2"
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
