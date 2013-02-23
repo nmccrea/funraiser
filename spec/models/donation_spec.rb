@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Donation do
+  
   describe 'associations' do
+    
     it "should belong to a fundraiser" do
       donation = Donation.create
       donation.fundraiser = Fundraiser.create
