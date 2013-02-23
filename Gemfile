@@ -23,6 +23,7 @@ end
 
 group :test, :development do
   gem "rspec-rails", "~> 2.12.2"
+  gem 'debugger'
 end
 
 # To use ActiveModel has_secure_password
