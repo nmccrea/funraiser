@@ -1,4 +1,11 @@
 JobApplication::Application.routes.draw do
+  devise_scope :user do
+    get '/sign_in' => 'sessions#new', as: :new_user_session
+    post '/sign_in' => 'sessions#create', as: :user_session
+    get '/sign_out' => 'sessions#destroy', as: :destroy_user_session
+    get '/sign_up' => 'registrations#new', as: :sign_up
+  end
+
   resources :users
   resources :fundraisers
   
