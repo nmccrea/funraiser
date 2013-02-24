@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem "haml-rails", "~> 0.4"
 gem 'simple_form'
+gem "devise", "~> 2.2.3"
 
 # Gems used only for assets and not required
 # in production environments by default.
