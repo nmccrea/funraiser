@@ -3,7 +3,7 @@
 %h2 These are your fundraisers:
 
 - @fundraisers.each do |fundraiser|
-  %a{ href: fundraiser_path( fundraiser )}
+  %a{ href: user_fundraiser_path( @user, fundraiser )} #{fundraiser.fundraiser_name}
   
 %h2 Fill out the form below to create a new fundraiser:
 

@@ -3,9 +3,12 @@ class FundraisersController < ApplicationController
   end
   
   def create
+    @user = User.find( params[:user_id] )
     fundraiser = Fundraiser.new( params[:fundraiser] )
-    if fundraiser.save!
-      redirect_to fundraiser_path( fundraiser )
+    
+    @user.fundraisers << fundraiser
+    if @user.save! && fundraiser.save!
+      redirect_to user_fundraiser_path( @user, fundraiser )
     else
       redirect_to :new
     end
