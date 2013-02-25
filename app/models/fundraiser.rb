@@ -10,8 +10,23 @@ class Fundraiser < ActiveRecord::Base
   # Accessiblity
   attr_accessible :fundraiser_name, :fundraising_goal
   
+  # ===
+  # = Public Methods
+  # ===
+  
+  def percent_of_goal_raised
+    ( ( 100.0 * self.funds_raised ) / self.fundraising_goal ).round
+  end
+  
+  def receive_donation( p_donation )
+    if p_donation.amount >= 0
+      self.donations << p_donation
+      self.funds_raised += p_donation.amount
+    end
+  end
+  
   # ====
-  # Private Methods
+  # = Private Methods
   # ====
   private
   

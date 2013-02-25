@@ -23,6 +23,7 @@ describe Fundraiser do
   end
   
   describe 'initialization' do
+    
     it 'should have a value of zero for the initial funds raised' do
       Fundraiser.new.funds_raised.should == 0;
     end
@@ -30,31 +31,53 @@ describe Fundraiser do
   
   describe 'public methods' do
     
-    # describe 'recieve_donation' do
-    #   
-    #   it 'should add the donation amount to the total raised' do
-    #     fundraiser = Fundraiser.create
-    #     fundraiser.funds_raised.should == 0;
-    #     donation1 = Donation.create( amount: 1200.50 )
-    #     expect{
-    #       fundraiser.recieve_donation( donation1 )
-    #     }.to change{ fundraiser.funds_raised }.by( 1200.50 )
-    #     
-    #     donation2 = Donation.create( amount: 13.75 )
-    #     expect{
-    #       fundraiser.recieve_donation( donation2 )
-    #     }.to change{ fundraiser.funds_raised }.by( 13.75 )
-    #     
-    #     fundraiser.funds_raised.should == 1214.25
-    #   end
-    #   
-    #   it 'should add the donation to donations array' do
-    #     
-    #   end
-    #   
-    #   it 'should save the changes to the database' do
-    #     
-    #   end
-    # end
+    describe 'percent_of_goal_raised' do
+      
+      it 'should return the percentage of the goal raised, rounded to the nearest percent' do
+        fundraiser = Fundraiser.new( :fundraising_goal => 100.0 )
+        donation = Donation.new( :amount => 24.3 )
+        fundraiser.receive_donation( donation )
+        fundraiser.percent_of_goal_raised.should == 24
+      end
+    end # describe 'percent_of_goal_raised' do
+    
+    describe 'receive_donation' do
+      
+      it 'should add the donation amount to the total raised' do
+        fundraiser = Fundraiser.new
+        fundraiser.funds_raised.should == 0;
+        donation1 = Donation.new( amount: 100 )
+        expect{
+          fundraiser.receive_donation( donation1 )
+        }.to change{ fundraiser.funds_raised }.by( 100 )
+        
+        donation2 = Donation.new( amount: 13.75 )
+        expect{
+          fundraiser.receive_donation( donation2 )
+        }.to change{ fundraiser.funds_raised }.by( 13.75 )
+        
+        fundraiser.funds_raised.should == 113.75
+      end
+      
+      it 'should add the donation to donations array' do
+        fundraiser = Fundraiser.new
+        fundraiser.donations.should be_empty
+        
+        donation1 = Donation.new( :amount => 100.0 )
+        donation2 = Donation.new( :amount => 13.75 )
+        
+        fundraiser.receive_donation( donation1 )
+        fundraiser.donations.length.should == 1
+        fundraiser.donations.first.should == donation1
+        
+        fundraiser.receive_donation( donation2 )
+        fundraiser.donations.length.should == 2
+        fundraiser.donations.last.should == donation2
+      end
+      
+      # it 'should save the changes to the database' do
+      #   
+      # end
+    end # describe 'receive_donation' do
   end
 end
