@@ -1,2 +1,6 @@
 module ApplicationHelper
+  
+  def body_tag_class
+    "#{controller_name}-#{action_name}"
+  end
 end
