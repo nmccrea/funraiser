@@ -22,6 +22,12 @@ describe Fundraiser do
     end
   end
   
+  describe 'initialization' do
+    it 'should have a value of zero for the initial funds raised' do
+      Fundraiser.new.funds_raised.should == 0;
+    end
+  end
+  
   describe 'public methods' do
     
     # describe 'recieve_donation' do

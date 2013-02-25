@@ -1,5 +1,7 @@
-/ %a{ href: user_path( @fundraiser.owner_user ) }
+%a{ href: user_path( @fundraiser.owner_user ) } Return to Dashboard
 
 %h1 Fundraiser: #{@fundraiser.fundraiser_name}
 
 %h2 Goal: $#{@fundraiser.fundraising_goal}
+
+%h2 Amount Raised: $#{@fundraiser.funds_raised}
