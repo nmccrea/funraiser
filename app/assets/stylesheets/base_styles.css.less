@@ -18,8 +18,42 @@
   width: 960px;
   height: 100%;
   margin: 0 auto;
-  padding: 15px 15px 0;
   background-color: #FFF;
+}
+
+header {
+  background-color: @secondary_color_b;
+  border-bottom: 2px solid @secondary_color_b_dark;
+  padding: 20px;
+  
+  a.logo {
+    font-size: 50px;
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+.content {
+  padding: 15px 15px 0;
+}
+
+form {
+  
+  .input { // simpleform class
+    margin: 3px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 150px;
+  }
+  
+  input, textarea {
+    width: 200px;
+  }
+  textarea {
+    height: 100px;
+  }
 }
 
 a, a:visited {

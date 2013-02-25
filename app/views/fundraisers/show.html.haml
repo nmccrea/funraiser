@@ -2,17 +2,32 @@
 
 %h1 Fundraiser: #{ @fundraiser.fundraiser_name }
 
-%h2 Goal: #{ number_to_currency( @fundraiser.fundraising_goal ) }
+.left_column
+  %h2 Goal: #{ number_to_currency( @fundraiser.fundraising_goal ) }
 
-%h2 Amount Raised: #{ number_to_currency( @fundraiser.funds_raised ) }
+  %h2 Amount Raised: #{ number_to_currency( @fundraiser.funds_raised ) }
 
-%h2 Percent of Goal Raised: %#{ @fundraiser.percent_of_goal_raised }
+  %h2 Percent of Goal Raised: %#{ @fundraiser.percent_of_goal_raised }
 
-%h2 Donate to this Fundraiser:
+  %h2 Donate to this Fundraiser:
 
-= simple_form_for Donation.new, url: user_fundraiser_donations_path( @user, @fundraiser ) do |f|
-  = f.input :donor_first_name
-  = f.input :donor_last_name
-  = f.input :amount
-  = f.input :donor_message
-  = f.submit
+  = simple_form_for Donation.new, url: user_fundraiser_donations_path( @user, @fundraiser ) do |f|
+    = f.input :donor_first_name
+    = f.input :donor_last_name
+    = f.input :amount
+    = f.input :donor_message
+    = f.submit
+    
+.right_column
+  %h2 Most Recent Donations:
+  
+  - @fundraiser.donations.last( 5 ).reverse.each do |donation|
+    .donation_summary
+      %p
+        %strong #{donation.donor_first_name} #{donation.donor_last_name}
+      %p
+        %strong Amount Donated:
+        #{donation.amount}
+      %p
+        %strong Donor Message:
+        #{donation.donor_message}

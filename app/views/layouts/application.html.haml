@@ -9,9 +9,8 @@
   %body{ :class => body_tag_class }
     .body_background
       .page
-        .header
-          %a{ href: root_path }
-            %h1 Fun Raiser
+        %header
+          %a.logo{ href: root_path } Fun Raiser
       
         .content
           = yield
