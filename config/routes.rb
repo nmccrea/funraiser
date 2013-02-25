@@ -5,6 +5,9 @@ JobApplication::Application.routes.draw do
     end
   end
   
+  match 'sign_up' => 'registrations#sign_up', as: :sign_up
+  match 'submit_registration' => 'registrations#create', as: :submit_registration
+  
   root to: 'homepage#index'
   
   # The priority is based upon order of creation:
