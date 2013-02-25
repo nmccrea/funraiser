@@ -14,6 +14,7 @@ class Fundraiser < ActiveRecord::Base
   # = Public Methods
   # ===
   
+  # returns the percentage, not the fraction
   def percent_of_goal_raised
     ( ( 100.0 * self.funds_raised ) / self.fundraising_goal ).round
   end
