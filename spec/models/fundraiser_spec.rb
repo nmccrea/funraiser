@@ -24,8 +24,16 @@ describe Fundraiser do
   
   describe 'initialization' do
     
-    it 'should have a value of zero for the initial funds raised' do
+    it 'should have a value of 0 for the initial funds_raised' do
       Fundraiser.new.funds_raised.should == 0;
+    end
+    
+    it 'should NOT have the funds_raised value reset to 0 when loading from the database' do
+      fundraiser = Fundraiser.new
+      fundraiser.funds_raised = 123.45
+      fundraiser.save!
+      fundraiser.reload
+      fundraiser.funds_raised.should == 123.45
     end
   end
   

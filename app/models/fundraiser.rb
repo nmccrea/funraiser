@@ -33,6 +33,6 @@ class Fundraiser < ActiveRecord::Base
   
   def init
     # Set default values
-    self.funds_raised = 0;
+    self.funds_raised ||= 0;
   end
 end

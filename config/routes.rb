@@ -1,6 +1,8 @@
 JobApplication::Application.routes.draw do
   resources :users do
-    resources :fundraisers
+    resources :fundraisers do
+      resources :donations
+    end
   end
   
   root to: 'homepage#index'

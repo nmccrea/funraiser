@@ -1,9 +1,11 @@
 class FundraisersController < ApplicationController
+  
+  before_filter :load_user
+  
   def new
   end
   
   def create
-    @user = User.find( params[:user_id] )
     fundraiser = Fundraiser.new( params[:fundraiser] )
     
     @user.fundraisers << fundraiser
@@ -17,4 +19,15 @@ class FundraisersController < ApplicationController
   def show
     @fundraiser = Fundraiser.find( params[:id] )
   end
+  
+  # ===
+  # = Private Methods
+  # ===
+  private
+  
+  # loads the user object using the request params
+  def load_user
+    @user = User.find( params[:user_id] )
+  end
+  
 end
