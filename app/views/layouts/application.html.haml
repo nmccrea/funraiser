@@ -12,12 +12,13 @@
         %header
           %a.logo{ href: root_path } Fun Raiser
           
-          - if user_is_logged_in
-            %a{ href: sign_out_path } Sign Out
-          - else
-            %a{ href: sign_in_path } Sign In
-            |
-            %a{ href: sign_up_path } Sign Up
+          .login_controls
+            - if user_is_logged_in
+              %a{ href: sign_out_path } Sign Out
+            - else
+              %a{ href: sign_in_path } Sign In
+              |
+              %a{ href: sign_up_path } Sign Up
       
         .content
           - if flash[:notice]
