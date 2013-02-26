@@ -37,6 +37,21 @@ describe ApplicationController do
     end
   end # describe '#current_user'
   
+  describe '#user_is_logged_in' do
+    
+    it 'should return true if current_user_id is set in the session object' do
+      user = User.create( username: 'johndoe', password: 'password' )
+      controller.login( user )
+      session[:current_user_id].should == user.id
+      controller.user_is_logged_in.should == true
+    end
+    
+    it 'should return false if the current_user_id is not set in the session object' do
+      session[:current_user_id].should be_nil
+      controller.user_is_logged_in.should == false
+    end
+  end # describe '#user_is_logged_in'
+  
   describe '#authorize_current_page' do
     
     it 'should return true if the current page belongs to the currently logged-in user' do
