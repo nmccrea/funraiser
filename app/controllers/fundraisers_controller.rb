@@ -3,16 +3,31 @@ class FundraisersController < ApplicationController
   before_filter :load_user_and_authorization
   
   def new
+    # if the current user would not own this fundraiser, redirect to the owner user's dashboard
+    unless @current_user_is_owner
+      flash[:alert] = 'Sorry, you cannot create a fundraiser for somebody else.'
+      redirect_to user_path( @owner_user )
+    end
   end
   
   def create
-    fundraiser = Fundraiser.new( params[:fundraiser] )
-    
-    @owner_user.fundraisers << fundraiser
-    if @owner_user.save! && fundraiser.save!
-      redirect_to user_fundraiser_path( @owner_user, fundraiser )
+    if @current_user_is_owner
+      
+      # create the fundraiser and go to its page
+      fundraiser = Fundraiser.new( params[:fundraiser] )
+      @owner_user.fundraisers << fundraiser
+      if @owner_user.save! && fundraiser.save!
+        redirect_to user_fundraiser_path( @owner_user, fundraiser )
+      else
+        redirect_to :new
+      end
+      
     else
-      redirect_to :new
+      
+      # redirect to the owner user's dashboard
+      flash[:alert] = 'Sorry, you cannot create a fundraiser for somebody else.'
+      redirect_to user_path( @owner_user )
+      
     end
   end
   

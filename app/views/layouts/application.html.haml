@@ -14,6 +14,8 @@
           
           .login_controls
             - if user_is_logged_in?
+              %a{ href: user_path( controller.current_user ) }= "#{controller.current_user.first_name} #{controller.current_user.last_name}"
+              |
               %a{ href: sign_out_path } Sign Out
             - else
               %a{ href: sign_in_path } Sign In
