@@ -1,6 +1,6 @@
 class FundraisersController < ApplicationController
   
-  before_filter :load_user
+  before_filter :load_user_and_authorization
   
   def new
   end
@@ -8,9 +8,9 @@ class FundraisersController < ApplicationController
   def create
     fundraiser = Fundraiser.new( params[:fundraiser] )
     
-    @user.fundraisers << fundraiser
-    if @user.save! && fundraiser.save!
-      redirect_to user_fundraiser_path( @user, fundraiser )
+    @owner_user.fundraisers << fundraiser
+    if @owner_user.save! && fundraiser.save!
+      redirect_to user_fundraiser_path( @owner_user, fundraiser )
     else
       redirect_to :new
     end
@@ -26,8 +26,9 @@ class FundraisersController < ApplicationController
   private
   
   # loads the user object using the request params
-  def load_user
-    @user = User.find( params[:user_id] )
+  def load_user_and_authorization
+    @owner_user = User.find( params[:user_id] )
+    @current_user_is_owner = ( current_user_id == params[:user_id].to_i )
   end
   
 end

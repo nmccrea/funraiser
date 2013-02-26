@@ -11,7 +11,7 @@
 
   %h2 Donate to this Fundraiser:
 
-  = simple_form_for Donation.new, url: user_fundraiser_donations_path( @user, @fundraiser ) do |f|
+  = simple_form_for Donation.new, url: user_fundraiser_donations_path( @owner_user, @fundraiser ) do |f|
     = f.input :donor_first_name
     = f.input :donor_last_name
     = f.input :amount

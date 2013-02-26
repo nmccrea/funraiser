@@ -1,9 +1,9 @@
-%h1 Hello #{@user.first_name} #{@user.last_name}
+%h1 Hello #{@owner_user.first_name} #{@owner_user.last_name}
 
 %h2 These are your fundraisers:
 
 - @fundraisers.each do |fundraiser|
-  %a{ href: user_fundraiser_path( @user, fundraiser )} #{fundraiser.fundraiser_name}
+  %a{ href: user_fundraiser_path( @owner_user, fundraiser )} #{fundraiser.fundraiser_name}
   
 %h2 Fill out the form below to create a new fundraiser:
 
