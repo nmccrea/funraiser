@@ -11,6 +11,13 @@
       .page
         %header
           %a.logo{ href: root_path } Fun Raiser
+          
+          - if user_is_logged_in
+            %a{ href: '#' } Sign Out
+          - else
+            %a{ href: '#' } Sign In
+            |
+            %a{ href: '#' } Sign Up
       
         .content
           = yield
