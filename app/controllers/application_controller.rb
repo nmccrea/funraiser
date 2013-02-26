@@ -17,10 +17,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def current_user_id
+    session[:current_user_id]
+  end
+  
   def user_is_logged_in?
     !!session[:current_user_id]
   end
   
-  def authorize_current_page
-  end
+  # def authorize_current_page
+  # end
 end
