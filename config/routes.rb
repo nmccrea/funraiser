@@ -5,8 +5,11 @@ JobApplication::Application.routes.draw do
     end
   end
   
+  match 'sign_in' => 'sessions#sign_in', as: :sign_in
+  match 'submit_sign_in' => 'sessions#submit_sign_in', as: :submit_sign_in
+  match 'sign_out' => 'sessions#sign_out', as: :sign_out
   match 'sign_up' => 'registrations#sign_up', as: :sign_up
-  match 'submit_registration' => 'registrations#create', as: :submit_registration
+  match 'submit_registration' => 'registrations#submit_registration', as: :submit_registration
   
   root to: 'homepage#index'
   

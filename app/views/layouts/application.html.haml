@@ -13,11 +13,11 @@
           %a.logo{ href: root_path } Fun Raiser
           
           - if user_is_logged_in
-            %a{ href: '#' } Sign Out
+            %a{ href: sign_out_path } Sign Out
           - else
-            %a{ href: '#' } Sign In
+            %a{ href: sign_in_path } Sign In
             |
-            %a{ href: '#' } Sign Up
+            %a{ href: sign_up_path } Sign Up
       
         .content
           = yield

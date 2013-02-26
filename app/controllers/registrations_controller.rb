@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
   def sign_up
   end
   
-  def create
+  def submit_registration
     user = User.new( params[:user] )
     if user.save!
       login( user )
