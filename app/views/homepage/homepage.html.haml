@@ -1,11 +1,14 @@
 .splash
-  %h1 Welcome to Fun Raiser
+  %h1 Welcome to FunRaiser
   
 %ul
-  - unless user_is_logged_in?
+  - if user_is_logged_in?
     %li
-      %a{ href: sign_in_path } Click Here to Log In
+      %a{ href: user_path( controller.current_user ) } Go to Your Dashboard
+  - else
     %li
-      %a{ href: sign_up_path } Click Here to Sign Up
+      %a{ href: sign_in_path } Log In
+    %li
+      %a{ href: sign_up_path } Sign Up
   %li
-    %a{ href: all_fundraisers_index_path } Click Here to Browse Fundraisers
+    %a{ href: all_fundraisers_index_path } Browse Fundraisers

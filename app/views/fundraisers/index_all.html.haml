@@ -8,7 +8,10 @@
       %ul
         - user.fundraisers.each do |fundraiser|
           %li
-            %strong
+          
+          .fundraiser_line_item
+            .link
               %a{ href: user_fundraiser_path( user, fundraiser ) } #{fundraiser.fundraiser_name}
-            ( Goal: #{ number_to_currency( fundraiser.fundraising_goal ) } - #{fundraiser.percent_of_goal_raised}% raised )
+            .goal Goal: #{ number_to_currency( fundraiser.fundraising_goal ) }
+            .percent_raised #{fundraiser.percent_of_goal_raised}% raised
       
