@@ -12,11 +12,11 @@
   %h2 Donate to this Fundraiser:
 
   = simple_form_for Donation.new, url: user_fundraiser_donations_path( @owner_user, @fundraiser ) do |f|
-    = f.input :donor_first_name
-    = f.input :donor_last_name
-    = f.input :amount
-    = f.input :donor_message
-    = f.submit
+    = f.input :donor_first_name, label: 'First Name'
+    = f.input :donor_last_name, label: 'Last Name'
+    = f.input :amount, label: 'Donation Amount'
+    = f.input :donor_message, label: 'Leave a message!'
+    = f.submit 'Donate'
     
 .right_column
   %h2 Most Recent Donations:

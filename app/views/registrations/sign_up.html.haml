@@ -1,6 +1,6 @@
 = simple_form_for User.new, url: submit_registration_path do |f|
-  = f.input :first_name
-  = f.input :last_name
+  = f.input :first_name, label: 'First Name'
+  = f.input :last_name, label: 'Last Name'
   = f.input :username
   = f.input :password
-  = f.submit
+  = f.submit 'Sign Up!'

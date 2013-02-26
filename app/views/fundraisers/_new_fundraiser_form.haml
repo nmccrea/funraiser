@@ -1,4 +1,4 @@
 = simple_form_for Fundraiser.new, url: user_fundraisers_path( @owner_user ) do |f|
-  = f.input :fundraiser_name
-  = f.input :fundraising_goal
-  = f.submit
+  = f.input :fundraiser_name, label: 'Name'
+  = f.input :fundraising_goal, label: 'Fundraising Goal'
+  = f.submit 'Create Fundraiser'
