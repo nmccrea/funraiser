@@ -3,14 +3,33 @@
 body.fundraisers-show {
   
   .left_column, .right_column {
-    width: 45%;
     display: inline-block;
     vertical-align: top;
+  }
+  .left_column {
+    width: 55%;
+    margin-right: 10px;
+  }
+  .right_column {
+    width: 35%
+  }
+  
+  .fundraiser_summary {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: @primary_color_bright;
   }
   
   .donation_summary {
     padding: 10px;
     margin-bottom: 15px;
     background-color: @secondary_color_a;
+  }
+  
+  form#new_donation {
+    display: block;
+  }
+  textarea#donation_donor_message {
+    height: 50px;
   }
 }

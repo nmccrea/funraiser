@@ -11,7 +11,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: @primary_color;
+  background-color: @primary_color_dark;
 }
 
 .page {
@@ -43,7 +43,16 @@ header {
   padding: 15px 15px 0;
 }
 
+li {
+  list-style-type: none;
+}
+
+// FORMS
+// ==========
 form {
+  display: inline-block;
+  background-color: @primary_color_light;
+  padding: 15px;
   
   .input { // simpleform class
     margin: 3px;
@@ -52,6 +61,8 @@ form {
   label {
     display: inline-block;
     width: 150px;
+    text-align: right;
+    margin-right: 10px;
   }
   
   input, textarea {
@@ -60,8 +71,16 @@ form {
   textarea {
     height: 100px;
   }
+  input[type='submit'] {
+    color: white;
+    background-color: @secondary_color_b_dull;
+    border-radius: 5px;
+    padding: 3px 0;
+  }
 }
 
+// TEXT
+// ==========
 a, a:visited {
   color: @primary_color_dark;
   text-decoration: none;
@@ -70,6 +89,6 @@ a:hover {
   color: @primary_color - #111;
 }
 
-li {
-  list-style-type: none;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.2em 0;
 }
