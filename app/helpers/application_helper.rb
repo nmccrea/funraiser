@@ -6,8 +6,8 @@ module ApplicationHelper
     "#{controller_name}-#{action_name}"
   end
   
-  def user_is_logged_in
-    @user_is_logged_in ||= controller.user_is_logged_in
+  def user_is_logged_in?
+    @user_is_logged_in ||= controller.user_is_logged_in?
     @user_is_logged_in
   end
 end

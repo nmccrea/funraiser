@@ -13,7 +13,7 @@
           %a.logo{ href: root_path } Fun Raiser
           
           .login_controls
-            - if user_is_logged_in
+            - if user_is_logged_in?
               %a{ href: sign_out_path } Sign Out
             - else
               %a{ href: sign_in_path } Sign In
