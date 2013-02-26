@@ -20,4 +20,9 @@
             %a{ href: sign_up_path } Sign Up
       
         .content
+          - if flash[:notice]
+            = flash[:notice]
+          - if flash[:alert]
+            = flash[:alert]
+            
           = yield
