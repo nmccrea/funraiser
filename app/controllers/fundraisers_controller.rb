@@ -1,6 +1,9 @@
 class FundraisersController < ApplicationController
   
-  before_filter :load_user_and_authorization
+  before_filter :load_user_and_authorization, only: [:new, :create, :show]
+  
+  def index_all
+  end
   
   def new
     # if the current user would not own this fundraiser, redirect to the owner user's dashboard

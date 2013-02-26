@@ -5,6 +5,8 @@ JobApplication::Application.routes.draw do
     end
   end
   
+  match 'index_all' => 'fundraisers#index_all', as: :all_fundraisers_index
+  
   match 'sign_in' => 'sessions#sign_in', as: :sign_in
   match 'submit_sign_in' => 'sessions#submit_sign_in', as: :submit_sign_in
   match 'sign_out' => 'sessions#sign_out', as: :sign_out

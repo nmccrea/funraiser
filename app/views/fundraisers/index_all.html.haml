@@ -1,0 +1,12 @@
+%h1 The following fundraisers are currently active:
+
+%ul
+- User.all.to_a.each do |user|
+  - if user.fundraisers.length > 0
+    %li
+      %strong= "#{user.first_name} #{user.last_name}"
+      %ul
+        - user.fundraisers.each do |fundraiser|
+          %li
+            %a{ href: user_fundraiser_path( user, fundraiser ) }= "#{fundraiser.fundraiser_name}"
+      
