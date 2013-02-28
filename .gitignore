@@ -15,3 +15,5 @@
 /tmp
 
 /devsteps
+/config/database.yml
+Gemfile.local

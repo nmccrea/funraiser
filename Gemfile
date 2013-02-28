@@ -1,11 +1,17 @@
 source 'https://rubygems.org'
 
+local_gemfile = File.dirname(__FILE__) + "/Gemfile.local"
+if File.file?(local_gemfile)
+  self.instance_eval( Bundler.read_file(local_gemfile) )
+else
+  gem 'pg'
+end
+
 gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
 gem 'jquery-rails'
 gem "haml-rails", "~> 0.4"
 gem 'simple_form'
