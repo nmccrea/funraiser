@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-local_gemfile = File.dirname(__FILE__) + "/Gemfile.local"
-if File.file?(local_gemfile)
-  self.instance_eval( Bundler.read_file(local_gemfile) )
-else
-  gem 'pg'
-end
+# local_gemfile = File.dirname(__FILE__) + "/Gemfile.local"
+# if File.file?(local_gemfile)
+#   self.instance_eval( Bundler.read_file(local_gemfile) )
+# else
+#   gem 'pg'
+# end
 
 gem 'rails', '3.2.12'
 
@@ -31,8 +31,13 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'mysql2'
   gem "rspec-rails", "~> 2.12.2"
   gem 'debugger'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
